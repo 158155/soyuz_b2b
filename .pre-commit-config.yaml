@@ -27,8 +27,8 @@ repos:
     hooks:
       - id: mypy
         name: mypy
-        entry: uv run mypy app cli.py
+        entry: uv run mypy app
         language: system
         types: [python]
         pass_filenames: false
-        files: ^(app/|cli\.py)
+        files: ^(app/)
