@@ -22,6 +22,11 @@ def _clean_value(value: Any) -> Any:
 class ProductInput(BaseModel):
     model_config = ConfigDict(extra="allow")
 
+    name: str | None = None
+    manufacturer: str | None = None
+    description: str | None = None
+    specs: dict[str, Any] | None = None
+
     @model_validator(mode="before")
     @classmethod
     def _clean_input(cls, data: Any) -> Any:
