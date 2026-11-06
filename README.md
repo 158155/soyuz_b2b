@@ -67,6 +67,18 @@ uvicorn app.main:app --reload
 показывается на странице; для скачивания в MD/JSON используйте
 кнопку на странице (или `/export` ).
 
+### Тесты
+
+```bash
+uv run pytest -q
+# или: pytest -q
+```
+
+27 тестов: схемы входа/выхода, доменная логика (детект пропусков,
+нормализация характеристик, merge missing), retry `generate_card`
+на моках LLM и чтение входного JSON. Реальный вызов LLM и HTTP-роуты
+не тестируются — это интеграционный уровень, вне рамок MVP.
+
 ## Формат входных данных
 
 Контракт рассчитан на структуру из задания:
@@ -121,6 +133,9 @@ uvicorn app.main:app --reload
 - `app/api/routes_pages.py` — страницы.
 - `app/api/routes_api.py` — API-эндпоинты.
 - `templates/` — Jinja2-шаблоны.
+- `tests/` — юнит-тесты (pytest + pytest-asyncio): схемы, сервис,
+  чтение файлов; `conftest.py` сбрасывает кэши `get_settings`/
+  `get_openai_client` между тестами.
 
 Поток: HTTP → `routes_api` → `service.generate_card` → `llm.chat_json`
 → пост-обработка → `ProductCard` → Markdown/JSON или HTML.
