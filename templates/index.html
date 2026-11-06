@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}AI Product Card{% endblock %}
+
+{% block content %}
+<h1>Черновик карточки товара</h1>
+<form action="/generate-file" method="post" enctype="multipart/form-data">
+  <label>JSON-файл с товарами
+    <input type="file" name="file" accept=".json,application/json" required>
+  </label>
+  <label>Формат вывода
+    <select name="output_format">
+      <option value="md">MD</option>
+      <option value="json">JSON</option>
+    </select>
+  </label>
+  <button type="submit">Показать результат</button>
+  <button type="submit" formaction="/export">Скачать файл</button>
+</form>
+{% endblock %}

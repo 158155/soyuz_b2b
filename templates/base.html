@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>{% block title %}AI Product Card{% endblock %}</title>
+<style>
+body { font-family: sans-serif; max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+label { display: block; margin-top: 1rem; font-weight: bold; }
+input, select, button { padding: .5rem; }
+button { margin-top: 1rem; }
+pre { background: #f4f4f4; padding: 1rem; white-space: pre-wrap; }
+.card { border: 1px solid #ddd; padding: 1rem; margin: 1rem 0; border-radius: 8px; }
+.error { color: #b00020; background: #fdecea; padding: 1rem; border-radius: 8px; }
+a { display: inline-block; margin-top: 1rem; }
+</style>
+</head>
+<body>
+<main>
+{% block content %}{% endblock %}
+</main>
+</body>
+</html>
